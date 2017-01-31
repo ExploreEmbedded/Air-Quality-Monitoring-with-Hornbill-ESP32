@@ -57,7 +57,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
 float t,h;
-int  pred,tvoc;
+unsigned int  pred,tvoc;
 
 void setup() {
   Serial.begin(115200);
@@ -76,24 +76,22 @@ void loop() {
 
 //Update and print data from iAQ
 void iaqUpdate() {
-  Wire.begin();
-
-  
+  Wire.begin();  
   iaq.readRegisters();
-  String pred = "iAQ prediction value: \t";
-  pred += iaq.getPrediction();
+  //String pred;   //= "iAQ prediction value: \t";
+  pred = iaq.getPrediction();
   String ohm = "iAQ resistance value: \t";
   ohm += iaq.getResistance();
   ohm += " Ohms";
-  String tvoc = "iAQ TVOC value: \t";
-  tvoc += iaq.getTVOC();
+  //String tvoc = "iAQ TVOC value: \t";
+  tvoc = iaq.getTVOC();
  // Serial.println("Indoor Air Quality Data");
   //Serial.print("iAQ Data Status: \t");
   //Serial.println(iaq.getStatus());
   Serial.println(pred);
  // Serial.println(ohm);
   Serial.println(tvoc);
-  Serial.println();
+  //Serial.println();
 }
 
 void readSensors(){
@@ -127,18 +125,11 @@ void OLED_Display()
 
 {
 
-  // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
-  
-  // init done
   
   // Show image buffer on the display hardware.
   // Since the buffer is intialized with an Adafruit splashscreen
   // internally, this will display the splashscreen.
-  //display.display();
-  //delay(2000);
 
-  // Clear the buffer.
- // display.clearDisplay();
 
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -152,28 +143,35 @@ void OLED_Display()
   display.print("Temp     :");
   display.setCursor(70,20);
   display.print(t);
+  display.setCursor(100,20);
+  display.print(" C");
 
   display.setCursor(0,30);
   display.print("Humidity :");
   display.setCursor(70,30);
   display.println(h);
+   display.setCursor(100,30);
+  display.print(" %");
 
   
   display.setCursor(0,40);
   display.print("Pred Val :");
   display.setCursor(70,40);
    display.print(pred);
+    display.setCursor(100,40);
+  display.print(" ppm");
 
 
   display.setCursor(0,50);
   display.print("TVOC     :");
   display.setCursor(70,50);
   display.print(tvoc);
+   display.setCursor(100,50);
+  display.print(" ppb");
 
   
   display.display();
- // delay(2000);
- // display.clearDisplay();
+ 
 
 
 }
