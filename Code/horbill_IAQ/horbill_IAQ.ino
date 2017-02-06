@@ -9,6 +9,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+
+ 
 #define OLED_RESET 4
 #define OLED_address  0x3c
 Adafruit_SSD1306 display(OLED_RESET);
@@ -25,11 +27,13 @@ char TempValue[15];
 String str;
 const char* server = "api.thingspeak.com";
 
+const int analogInPin = A7;
 
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
 float t,h;
-unsigned int  pred,tvoc;
+unsigned int  pred,tvoc,sensorValue=0;
+float voltage=0;
 WiFiClient client;
 
 void setup() {
@@ -66,6 +70,7 @@ void setup() {
   }
 
 void loop() {
+  ReadBatteryVoltage();
   wifi_thingspeak();
   iaqUpdate();  
   readSensors();
@@ -198,6 +203,8 @@ void wifi_thingspeak()
                      postStr += String(pred);
                      postStr +="&field4=";
                      postStr += String(tvoc);
+                     postStr +="&field5=";
+                     postStr += String(voltage);
                      postStr += "\r\n\r\n";
            
                client.print("POST /update HTTP/1.1\n"); 
@@ -221,12 +228,34 @@ void wifi_thingspeak()
              
             Serial.println("Waiting...");    
             // thingspeak needs minimum 15 sec delay between updates
-            delay(20000);  
-     
+            delay(20000);    
 
 
 
 }
+
+void ReadBatteryVoltage ()
+{
+
+  
+  sensorValue = analogRead(analogInPin);
+  delay(1);
+  voltage = sensorValue * (3.8 / 4095.00) * 2; //convert the value to a true voltage.
+
+  if (voltage < 3.4) //set the voltage considered low battery here
+  Serial.println("Batt Low");
+
+  // print the results to the serial monitor:
+  Serial.print(" Count = ");
+  Serial.print(sensorValue); 
+  Serial.print("\t Battery Voltage = ");
+  Serial.println(voltage);
+
+  delay(2);
+}
+
+ 
+
 
 
 
