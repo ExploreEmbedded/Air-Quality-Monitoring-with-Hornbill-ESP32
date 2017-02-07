@@ -1,0 +1,417 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:VOC_iaqcorec
+LIBS:Hornbill-cache
+LIBS:oled_i2c
+LIBS:Hornbill iAQ-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Air Quality Monitoring with Hornbill ESP32"
+Date "2017-02-07"
+Rev ""
+Comp "ExploreEmbedded.com"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L R-RESCUE-Hornbill R4
+U 1 1 5899808F
+P 6120 2950
+F 0 "R4" V 6200 2950 50  0000 C CNN
+F 1 "10K" V 6120 2950 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6050 2950 50  0001 C CNN
+F 3 "" H 6120 2950 50  0000 C CNN
+	1    6120 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR6
+U 1 1 58998090
+P 5750 3640
+F 0 "#PWR6" H 5750 3390 50  0001 C CNN
+F 1 "GND" H 5750 3490 50  0000 C CNN
+F 2 "" H 5750 3640 50  0000 C CNN
+F 3 "" H 5750 3640 50  0000 C CNN
+	1    5750 3640
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR3
+U 1 1 58998091
+P 4320 3660
+F 0 "#PWR3" H 4320 3410 50  0001 C CNN
+F 1 "GND" H 4320 3510 50  0000 C CNN
+F 2 "" H 4320 3660 50  0000 C CNN
+F 3 "" H 4320 3660 50  0000 C CNN
+	1    4320 3660
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR2
+U 1 1 58998092
+P 3930 3700
+F 0 "#PWR2" H 3930 3450 50  0001 C CNN
+F 1 "GND" H 3850 3560 50  0000 C CNN
+F 2 "" H 3930 3700 50  0000 C CNN
+F 3 "" H 3930 3700 50  0000 C CNN
+	1    3930 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L C-RESCUE-Hornbill C1
+U 1 1 58998093
+P 5320 2750
+F 0 "C1" V 5460 2710 50  0000 L CNN
+F 1 "10uF" V 5170 2620 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 5358 2600 50  0001 C CNN
+F 3 "" H 5320 2750 50  0000 C CNN
+	1    5320 2750
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR5
+U 1 1 58998094
+P 5120 2800
+F 0 "#PWR5" H 5120 2550 50  0001 C CNN
+F 1 "GND" H 4990 2740 50  0000 C CNN
+F 2 "" H 5120 2800 50  0000 C CNN
+F 3 "" H 5120 2800 50  0000 C CNN
+	1    5120 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-Hornbill R3
+U 1 1 58998095
+P 5820 2950
+F 0 "R3" V 5900 2950 50  0000 C CNN
+F 1 "10K" V 5820 2950 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5750 2950 50  0001 C CNN
+F 3 "" H 5820 2950 50  0000 C CNN
+	1    5820 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-Hornbill R2
+U 1 1 58998096
+P 4180 3450
+F 0 "R2" V 4260 3450 50  0000 C CNN
+F 1 "10K" V 4180 3450 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 4110 3450 50  0001 C CNN
+F 3 "" H 4180 3450 50  0000 C CNN
+	1    4180 3450
+	0    1    1    0   
+$EndComp
+NoConn ~ 4520 3300
+Text Label 5580 3300 0    40   ~ 0
+SCL
+Text Label 5560 3450 0    40   ~ 0
+SDA
+Text Notes 4020 4420 0    80   ~ 16
+Temperature and Humidity Sensor
+Text Label 1040 3980 0    40   ~ 0
+SCL
+Text Label 1040 3680 0    40   ~ 0
+SDA
+Text GLabel 3920 2700 1    40   Input ~ 0
+3.3V
+Text GLabel 5570 2700 1    40   Input ~ 0
+3.3V
+Text GLabel 5820 2600 1    40   Input ~ 0
+3.3V
+Text GLabel 6120 2600 1    40   Input ~ 0
+3.3V
+Text GLabel 2490 2330 1    47   Input ~ 0
++5V
+Text GLabel 2600 4180 2    40   Input ~ 0
+3.3V
+$Comp
+L GND #PWR1
+U 1 1 589980BB
+P 1090 4280
+F 0 "#PWR1" H 1090 4030 50  0001 C CNN
+F 1 "GND" H 1090 4130 50  0000 C CNN
+F 2 "" H 1090 4280 50  0000 C CNN
+F 3 "" H 1090 4280 50  0000 C CNN
+	1    1090 4280
+	1    0    0    -1  
+$EndComp
+Text Notes 1320 4930 0    80   ~ 16
+Hornbill ESP32 Dev
+$Comp
+L ESP32_Breakout1 U1
+U 1 1 589980BE
+P 1840 3280
+F 0 "U1" H 1890 1980 80  0000 C CNN
+F 1 "ESP32_Breakout1" H 1890 2130 80  0000 C CNN
+F 2 "ee:ESP32_Breakout" H 1840 3280 80  0001 C CNN
+F 3 "" H 1840 3280 80  0000 C CNN
+	1    1840 3280
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5820 3200 5820 3300
+Wire Wire Line
+	6120 3200 6120 3450
+Wire Wire Line
+	5570 3150 5520 3150
+Wire Wire Line
+	5570 2700 5570 3150
+Connection ~ 5570 2750
+Wire Wire Line
+	1040 3680 1240 3680
+Wire Wire Line
+	1040 3980 1240 3980
+Wire Wire Line
+	2490 2330 2490 2380
+Wire Wire Line
+	1090 4280 1090 4180
+Wire Wire Line
+	5820 2700 5820 2600
+Wire Wire Line
+	6120 2700 6120 2600
+Wire Wire Line
+	5520 2750 5570 2750
+Wire Wire Line
+	5120 2800 5120 2750
+$Comp
+L R-RESCUE-Hornbill R1
+U 1 1 589980C4
+P 4170 3150
+F 0 "R1" V 4250 3150 50  0000 C CNN
+F 1 "10K" V 4170 3150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 4100 3150 50  0001 C CNN
+F 3 "" H 4170 3150 50  0000 C CNN
+	1    4170 3150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3920 3150 3920 2700
+Wire Wire Line
+	3930 3700 3930 3450
+Wire Wire Line
+	5520 3600 5750 3600
+Wire Wire Line
+	5750 3600 5750 3640
+Wire Wire Line
+	6120 3450 5520 3450
+Wire Wire Line
+	5820 3300 5520 3300
+Wire Wire Line
+	4520 3150 4420 3150
+Wire Wire Line
+	4320 3660 4320 3600
+Wire Wire Line
+	4320 3600 4520 3600
+$Comp
+L SHT31-DIS RH1
+U 1 1 589980DD
+P 4970 3400
+F 0 "RH1" H 4820 3800 60  0000 C CNN
+F 1 "SHT31-DIS" H 4770 3030 60  0000 C CNN
+F 2 "nosuz lib:DFN-8_SHT-3x-DIS" H 5120 3400 60  0001 C CNN
+F 3 "" H 5120 3400 60  0000 C CNN
+	1    4970 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4520 3450 4430 3450
+$Comp
+L GND #PWR4
+U 1 1 589980DE
+P 5070 3950
+F 0 "#PWR4" H 5070 3700 50  0001 C CNN
+F 1 "GND" H 5170 3850 50  0000 C CNN
+F 2 "" H 5070 3950 50  0000 C CNN
+F 3 "" H 5070 3950 50  0000 C CNN
+	1    5070 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5070 3950 5070 3900
+$Comp
+L iAQCOREC U2
+U 1 1 589A06B2
+P 7750 3500
+F 0 "U2" H 7740 3900 50  0000 C CNN
+F 1 "iAQCOREC" H 7710 3120 50  0000 C CNN
+F 2 "" H 7020 3880 50  0000 C CNN
+F 3 "" H 7020 3880 50  0000 C CNN
+	1    7750 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-Hornbill R5
+U 1 1 589A1221
+P 6950 3050
+F 0 "R5" V 7030 3050 50  0000 C CNN
+F 1 "10K" V 6950 3050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6880 3050 50  0001 C CNN
+F 3 "" H 6950 3050 50  0000 C CNN
+	1    6950 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L R-RESCUE-Hornbill R6
+U 1 1 589A1514
+P 8680 3050
+F 0 "R6" V 8760 3050 50  0000 C CNN
+F 1 "10K" V 8680 3050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 8610 3050 50  0001 C CNN
+F 3 "" H 8680 3050 50  0000 C CNN
+	1    8680 3050
+	1    0    0    -1  
+$EndComp
+Text GLabel 8390 2690 1    40   Input ~ 0
+3.3V
+Wire Wire Line
+	8240 3290 8390 3290
+Wire Wire Line
+	8390 3290 8390 2690
+Wire Wire Line
+	7270 3500 6950 3500
+Wire Wire Line
+	6950 3500 6950 3300
+Wire Wire Line
+	8240 3750 8680 3750
+Wire Wire Line
+	8680 3750 8680 3300
+NoConn ~ 8240 3500
+NoConn ~ 7270 3290
+$Comp
+L GND #PWR7
+U 1 1 589A30EC
+P 6950 3860
+F 0 "#PWR7" H 6950 3610 50  0001 C CNN
+F 1 "GND" H 6950 3710 50  0000 C CNN
+F 2 "" H 6950 3860 50  0000 C CNN
+F 3 "" H 6950 3860 50  0000 C CNN
+	1    6950 3860
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7270 3750 6950 3750
+Wire Wire Line
+	6950 3750 6950 3860
+Text GLabel 8680 2690 1    40   Input ~ 0
+3.3V
+Wire Wire Line
+	8680 2690 8680 2800
+Text GLabel 6950 2690 1    40   Input ~ 0
+3.3V
+Wire Wire Line
+	6950 2690 6950 2800
+Text Label 7120 3500 0    40   ~ 0
+SCL
+Text Label 8320 3750 0    40   ~ 0
+SDA
+$Comp
+L OLED_I2C U3
+U 1 1 589A5D01
+P 9990 3240
+F 0 "U3" H 9640 3480 50  0000 C CNN
+F 1 "OLED_I2C" H 10000 3190 50  0000 C CNN
+F 2 "" H 9260 3620 50  0000 C CNN
+F 3 "" H 9260 3620 50  0000 C CNN
+	1    9990 3240
+	1    0    0    -1  
+$EndComp
+Text Label 10090 2850 1    40   ~ 0
+SCL
+Text Label 10220 2850 1    40   ~ 0
+SDA
+Text GLabel 9960 2850 1    40   Input ~ 0
+3.3V
+$Comp
+L GND #PWR8
+U 1 1 589A7EBE
+P 9650 2670
+F 0 "#PWR8" H 9650 2420 50  0001 C CNN
+F 1 "GND" H 9650 2520 50  0000 C CNN
+F 2 "" H 9650 2670 50  0000 C CNN
+F 3 "" H 9650 2670 50  0000 C CNN
+	1    9650 2670
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9810 2850 9810 2630
+Wire Wire Line
+	9810 2630 9650 2630
+Wire Wire Line
+	9650 2630 9650 2670
+NoConn ~ 2440 2480
+NoConn ~ 2440 2580
+NoConn ~ 2440 2680
+NoConn ~ 2440 2780
+NoConn ~ 2440 2880
+NoConn ~ 2440 2980
+NoConn ~ 2440 3080
+NoConn ~ 2440 3180
+NoConn ~ 2440 3280
+NoConn ~ 2440 3380
+NoConn ~ 2440 3480
+NoConn ~ 2440 3580
+NoConn ~ 2440 3680
+NoConn ~ 2440 3780
+NoConn ~ 2440 3880
+NoConn ~ 2440 3980
+NoConn ~ 2440 4080
+Wire Wire Line
+	1090 4180 1240 4180
+NoConn ~ 1240 2380
+NoConn ~ 1240 2480
+NoConn ~ 1240 2580
+NoConn ~ 1240 2680
+NoConn ~ 1240 2780
+NoConn ~ 1240 3580
+NoConn ~ 1240 3470
+NoConn ~ 1240 3380
+NoConn ~ 1240 3280
+NoConn ~ 1240 3180
+NoConn ~ 1240 3080
+NoConn ~ 1240 2980
+NoConn ~ 1240 2880
+NoConn ~ 1240 3880
+NoConn ~ 1240 3780
+NoConn ~ 1240 4080
+Wire Wire Line
+	2490 2380 2440 2380
+Wire Wire Line
+	2600 4180 2440 4180
+Text Notes 7460 4320 0    80   ~ 16
+VOC Sensor
+Text Notes 9870 4180 0    80   ~ 16
+OLED
+$EndSCHEMATC
