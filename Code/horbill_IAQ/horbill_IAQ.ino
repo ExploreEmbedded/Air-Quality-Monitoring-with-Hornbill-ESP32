@@ -34,13 +34,11 @@ Adafruit_SSD1306 display(OLED_RESET);
 
 WiFiClient client;
 
-//String apiKey = "things_speak_api_key";
-//char ssid[20] = "your_wifi_ssid";
-//char password[20] = "yourWifiPassword";
+String apiKey = "things_speak_api_key";
+char ssid[20] = "your_wifi_ssid";
+char password[20] = "yourWifiPassword";
 
-String apiKey = "YK4CWRHAS88E3E3E";
-char ssid[20] = "ExploreEmbedded.com";
-char password[20] = "9632083055";
+
 
 
 const char* server = "api.thingspeak.com";
