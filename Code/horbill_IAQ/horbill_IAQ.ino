@@ -8,11 +8,9 @@
  * 
  *  More details visit:
  *  
- *  https://exploreembedded.com/wiki/Building_a_reliable_and_rugged_Air_Quality_Logger_with_Hornbill_ESP32_PART-1 
+ *  https://exploreembedded.com/wiki/Building_a_reliable_and_rugged_Air_Quality_Logger_with_Hornbill_ESP32_PART-2
  *  
  */
-
-
 
 // Libraries
  
@@ -23,11 +21,15 @@
 #include <Adafruit_SSD1306.h>
 #include "iAQ-MOD1023.h"
 
-
 //Display 
 #define OLED_RESET 4
 #define OLED_address  0x3c
 Adafruit_SSD1306 display(OLED_RESET);
+
+// LED Status for tvoc indication
+#define status_led_green 32
+#define status_led_blue 33
+#define status_led_red 25
 
 
 //Wifi Thingspeak data logging
@@ -35,9 +37,8 @@ Adafruit_SSD1306 display(OLED_RESET);
 WiFiClient client;
 
 String apiKey = "things_speak_api_key";
-char ssid[20] = "your_wifi_ssid";
-char password[20] = "yourWifiPassword";
-
+char ssid[20] = "ExploreEmbedded.com";
+char password[20] = "9632083055";
 
 
 
@@ -56,6 +57,10 @@ unsigned int co2,tvoc;
 
 void setup() 
 {
+      pinMode(status_led_red, OUTPUT);
+      pinMode(status_led_green, OUTPUT);
+      pinMode(status_led_blue, OUTPUT);
+      
       Serial.begin(115200);
       display.begin(SSD1306_SWITCHCAPVCC, OLED_address);  
       display.clearDisplay();
@@ -89,7 +94,7 @@ void setup()
 
 void loop() 
 {
- 
+      
       iaqUpdate();  
       readSensors();
       updateDisplay();
@@ -104,6 +109,33 @@ void iaqUpdate()
       iaq.readRegisters();
       co2 = iaq.getPrediction();
       tvoc = iaq.getTVOC();
+
+      if(tvoc > 350 && tvoc < 500)
+      {
+
+        digitalWrite(status_led_green, LOW);
+        digitalWrite(status_led_blue, HIGH);
+        digitalWrite(status_led_red, LOW);        
+        
+      }
+
+      else if(tvoc > 500 && tvoc <= 600)
+      {
+        
+        digitalWrite(status_led_green, LOW);
+        digitalWrite(status_led_blue, LOW);
+        digitalWrite(status_led_red, HIGH);        
+        
+      }
+
+      else
+      {
+        
+        digitalWrite(status_led_green, HIGH);
+        digitalWrite(status_led_blue, LOW);
+        digitalWrite(status_led_red, LOW);            
+        
+      }
 
 }
 
@@ -225,12 +257,4 @@ void printData()
       Serial.print(co2);
       Serial.println("ppm");
 }
-
-
-
-
- 
-
-
-
 
